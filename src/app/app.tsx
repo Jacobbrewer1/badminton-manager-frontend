@@ -1,13 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import LandingPage from 'src/pages/LandingPage';
 import styles from './app.module.scss';
 
-import NxWelcome from './nx-welcome';
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="badminton" />
-    </div>
+   <LandingPage></LandingPage>
   );
 }
 
