@@ -1,11 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import LandingPage from 'src/pages/LandingPage';
-import styles from './app.module.scss';
+import { ThemeProvider } from '@mui/material/styles';
 
+import LandingPage from 'src/pages/LandingPage';
+
+import theme from 'src/styles/theme/theme';
 
 export function App() {
   return (
-   <LandingPage></LandingPage>
+    <ThemeProvider theme={theme}>
+      <LandingPage></LandingPage>
+    </ThemeProvider>
   );
 }
 

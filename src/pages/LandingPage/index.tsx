@@ -1,26 +1,28 @@
-
-import Box from '@mui/system/Box'
-import ToolBar from './components'
+import { Grid } from '@mui/material';
+import AppToolBar from './components/AppToolBar';
+import SearchBar from './components/SearchBar';
+import './index.scss';
 
 export default function LandingPage() {
-
-
-    return (
-      <>
-       <ToolBar></ToolBar>
-       
-        <Box
-          component="img"
-          sx={{
-
-            width: '100%',
-            
-          }}
-          alt="landing page background"
-          src="/public/main.jpg"
-        />
-
-        
-      </>
-    )
+  return (
+    <div id="main-container">
+      <AppToolBar />
+      <img
+        src="/public/main.jpg"
+        alt="badminton background"
+        id="main-image"
+      ></img>
+      <Grid
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        container
+        sx={{ height: '100%', width: '100%' }}
+      >
+        <Grid item>
+          <SearchBar />
+        </Grid>
+      </Grid>
+    </div>
+  );
 }
