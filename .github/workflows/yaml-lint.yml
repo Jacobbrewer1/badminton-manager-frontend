@@ -1,0 +1,30 @@
+---
+name: yaml-lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    types:
+      - opened
+      - reopened
+      - synchronize # source branch updated
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # docs: https://manpages.ubuntu.com/manpages/bionic/man1/yamllint.1.html
+      - name: Install yamllint
+        run: sudo apt-get install -y yamllint
+
+      - name: 'Run yamllint'
+        run: yamllint -c .yamllint ./
