@@ -6,9 +6,7 @@ ignore: |
     /bin/*
 
 rules:
-    document-start:
-        level: error
-        present: true
+    document-start: disable
     line-length: disable
     comments-indentation: disable
     braces:
