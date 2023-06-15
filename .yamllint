@@ -4,6 +4,7 @@ extends: default
 ignore: |
     /vendor/*
     /bin/*
+    /.github/*
 
 rules:
     document-start: disable
