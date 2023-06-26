@@ -1,13 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
+import { ThemeProvider } from '@mui/material/styles';
 
-import NxWelcome from './nx-welcome';
+import LandingPage from 'src/pages/LandingPage';
+
+import theme from 'src/styles/theme/theme';
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="badminton" />
-    </div>
+    <ThemeProvider theme={theme}>
+      <LandingPage></LandingPage>
+    </ThemeProvider>
   );
 }
 
