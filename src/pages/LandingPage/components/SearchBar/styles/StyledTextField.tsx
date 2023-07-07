@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import TextField from '@mui/material/TextField';
 
 /*styles*/
-import theme from 'src/styles/theme/theme';
+import theme from 'src/styles/theme';
 
 const StyledTextField = styled(TextField)({
   '& label': {

@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Tab, { tabClasses } from '@mui/material/Tab';
 
 /* theme */
-import theme from 'src/styles/theme/theme';
+import theme from 'src/styles/theme';
 
 const StyledTab = styled(Tab)`
   background-color: transparent;

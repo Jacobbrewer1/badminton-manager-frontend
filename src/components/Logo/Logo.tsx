@@ -15,10 +15,11 @@ export default function Logo({ contrast = 'dark', height = 24 }: LogoProps) {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100%;
   `;
 
   return (
-    <StyledBox sx={{}}>
+    <StyledBox>
       <LogoSvg
         fill={contrast === 'dark' ? 'rgb(255,255,255)' : 'rgb(0,0,0)'}
         height={`${height}px`}

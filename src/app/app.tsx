@@ -2,7 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 
 import LandingPage from 'src/pages/LandingPage';
 
-import theme from 'src/styles/theme/theme';
+import theme from 'src/styles/theme';
 
 export function App() {
   return (
