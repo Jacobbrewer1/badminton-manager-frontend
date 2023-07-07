@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import Button from '@mui/material/Button';
 
 /* theme */
-import theme from '../../../../../styles/theme/theme';
+import theme from 'src/styles/theme';
 
 const StyledButton = styled(Button)`
   color: ${theme.palette.background.default};

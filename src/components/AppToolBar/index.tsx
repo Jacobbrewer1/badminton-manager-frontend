@@ -11,28 +11,30 @@ export default function AppToolBar() {
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTab(newValue);
   };
+
   return (
-    <StyledAppBar>
+    <StyledAppBar position="static">
       <Grid
         container
-        direction={'row'}
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        spacing={2}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
       >
-        <Grid item xs={2}>
-          <Logo />
+        <Grid container item alignContent="center" sx={{ width: '700px' }}>
+          <Grid item>
+            <Logo />
+          </Grid>
+
+          <Grid item>
+            <StyledTabs value={tab} onChange={handleTabChange}>
+              <StyledTab label="League" value={0} />
+              <StyledTab label="Clubs" value={1} />
+              <StyledTab label="Players" value={2} />
+            </StyledTabs>
+          </Grid>
         </Grid>
 
         <Grid item>
-          <StyledTabs value={tab} onChange={handleTabChange}>
-            <StyledTab label="League" value={0} />
-            <StyledTab label="Clubs" value={1} />
-            <StyledTab label="Tournaments" value={2} />
-          </StyledTabs>
-        </Grid>
-
-        <Grid item xs={1} alignSelf={'flex-end'}>
           <StyledButton>
             <LoginIcon sx={{ marginRight: '8px' }} />
             Login

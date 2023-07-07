@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import { Divider, Toolbar } from '@mui/material';
 import { ReactComponent as LogoSvg } from '../../../../assets/shuttlecock.svg';
-import theme from 'src/styles/theme/theme';
+import theme from 'src/styles/theme';
 
 import { useCallback, useState } from 'react';
 import { StyledIconButton, StyledTextField } from './styles';
