@@ -4,12 +4,15 @@ import { Box, Container, Grid, Paper, Typography } from '@mui/material';
 import AppToolBar from 'src/components/AppToolBar';
 import SearchBar from './components/SearchBar';
 import LinkTile from './components/LinkTile';
+import Tributes from './components/Tributes';
 
 /* images */
-import BadminMain from '../../../public/badminMain.jpg';
-import BadminNet from '../../../public/badminNet.jpg';
-import BadminPlayer from '../../../public/badminPlayer.jpg';
-import BadminShuttlecock from '../../../public/badminShuttlecock.jpg';
+import BadminMain from '../../../public/images/badminMain.jpg';
+import BadminNet from '../../../public/images/badminNet.jpg';
+import BadminPlayer from '../../../public/images/badminPlayer.jpg';
+import BadminShuttlecock from '../../../public/images/badminShuttlecock.jpg';
+
+/* styles */
 import theme from 'src/styles/theme';
 
 export default function LandingPage() {
@@ -147,8 +150,47 @@ export default function LandingPage() {
         direction="column"
         justifyContent="center"
         alignItems="center"
-        sx={{ width: '100%', height: '1000px' }}
-      ></Grid>
+        sx={{ width: '100%', height: '400px' }}
+      >
+        <Grid item>
+          <Box
+            sx={{
+              width: `${
+                parseInt(theme.spacing(3).replace('px', '')) * 2 +
+                tileSizing.widthConstant * 3
+              }px`,
+            }}
+          >
+            <Grid container spacing={4}>
+              <Grid item>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 400,
+                    letterSpacing: 1.1,
+                  }}
+                >
+                  Tributes
+                </Typography>
+
+                <Typography sx={{ fontWeight: 400, width: '50%' }}>
+                  Not the greatest developers in the world, but a tribute... All
+                  jokes aside, check out our socials, we spent a lot of blood,
+                  sweat and key strokes creating this.
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Tributes
+                  width={
+                    parseInt(theme.spacing(3).replace('px', '')) * 2 +
+                    tileSizing.widthConstant * 3
+                  }
+                />
+              </Grid>
+            </Grid>
+          </Box>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }

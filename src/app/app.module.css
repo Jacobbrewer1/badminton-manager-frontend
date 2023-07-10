@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'nasalization';
+
+  src: url('../../public/fonts/nasalization.regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
