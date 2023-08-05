@@ -1,5 +1,21 @@
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  IconButton,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+} from '@mui/material';
+
+import MaleIcon from '@mui/icons-material/Male';
+import FemaleIcon from '@mui/icons-material/Female';
+
 import { DatePicker } from '@mui/x-date-pickers';
+
 import dayjs from 'dayjs';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
@@ -14,7 +30,11 @@ interface Password {
   error?: boolean;
 }
 
-export default function Register() {
+interface RegisterProps {
+  setAuthMode: React.Dispatch<React.SetStateAction<'register' | 'login'>>;
+}
+
+export default function Register({ setAuthMode }: RegisterProps) {
   const fetchRegister = async () => {
     const response = await fetch('http://localhost:3000/register');
     if (!response.ok) {
@@ -36,7 +56,7 @@ export default function Register() {
   const [password, setPassword] = useState<Password>({});
 
   return (
-    <Grid container direction="column" spacing={1}>
+    <Grid container direction="column" spacing={1} p={3}>
       <Grid item>
         <TextField
           label="username"
@@ -83,11 +103,33 @@ export default function Register() {
         />
       </Grid>
 
-      <Grid item>
-        <DatePicker label="Date of Birth" defaultValue={dayjs('2022-04-17')} />
+      <Grid item container spacing={1}>
+        <Grid item xs={6}>
+          <DatePicker
+            label="Date of Birth"
+            defaultValue={dayjs('2022-04-17')}
+            slotProps={{ textField: { fullWidth: true } }}
+          />
+        </Grid>
+        <Grid
+          item
+          container
+          xs={6}
+          justifyContent="space-around"
+          alignItems="center"
+        >
+          <Grid item>
+            <IconButton>
+              <MaleIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton>
+              <FemaleIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
       </Grid>
-
-      <Grid item></Grid>
 
       <Grid item>
         <Button>Register</Button>
@@ -95,7 +137,7 @@ export default function Register() {
 
       <Grid item>
         <Typography>Already haven an account?</Typography>
-        <Button>Login</Button>
+        <Button onClick={() => setAuthMode('login')}>Login</Button>
       </Grid>
     </Grid>
   );

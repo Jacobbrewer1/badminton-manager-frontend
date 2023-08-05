@@ -12,7 +12,11 @@ interface Password {
   error?: boolean;
 }
 
-export default function Login() {
+interface LoginProps {
+  setAuthMode: React.Dispatch<React.SetStateAction<'register' | 'login'>>;
+}
+
+export default function Login({ setAuthMode }: LoginProps) {
   const fetchLogin = async () => {
     const response = await fetch('http://localhost:3000/login');
     if (!response.ok) {
@@ -30,7 +34,7 @@ export default function Login() {
   const [password, setPassword] = useState<Password>({});
 
   return (
-    <Grid container direction="column" spacing={1}>
+    <Grid container direction="column" spacing={1} p={3}>
       <Grid item>
         <TextField
           label="username"
@@ -55,7 +59,7 @@ export default function Login() {
 
       <Grid>
         <Typography>Don't have an account? </Typography>
-        <Button>Register</Button>
+        <Button onClick={() => setAuthMode('register')}>Register</Button>
       </Grid>
     </Grid>
   );

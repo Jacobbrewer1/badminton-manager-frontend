@@ -53,7 +53,7 @@ export default function LinkTile({
     >
       <Paper
         onClick={() => {
-          console.timeLog(link);
+          console.log(link);
         }}
         sx={{
           height: '100%',
