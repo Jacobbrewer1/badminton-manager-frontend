@@ -1,3 +1,5 @@
+import { Link, useNavigate } from '@tanstack/router'
+
 import Logo from 'src/components/Logo/Logo';
 import Grid from '@mui/material/Grid';
 
@@ -7,6 +9,7 @@ import { useState } from 'react';
 
 export default function AppToolBar() {
   const [tab, setTab] = useState<number>(0);
+  const navigate = useNavigate()
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTab(newValue);
@@ -35,7 +38,7 @@ export default function AppToolBar() {
         </Grid>
 
         <Grid item>
-          <StyledButton>
+          <StyledButton onClick={() => navigate({to: '/authentication'})}>
             <LoginIcon sx={{ marginRight: '8px' }} />
             Login
           </StyledButton>
