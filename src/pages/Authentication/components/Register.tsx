@@ -1,24 +1,15 @@
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Grid,
-  IconButton,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
-} from '@mui/material';
+import dayjs from 'dayjs';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
+
+import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
 
 import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 
-import { DatePicker } from '@mui/x-date-pickers';
-
-import dayjs from 'dayjs';
-import { useState } from 'react';
-import { useQuery } from 'react-query';
+import StyledTextField from '../styles/StyledAuthTextField';
+import StyledIconButton from '../styles/StyledIconButton';
 
 interface Username {
   username?: string;
@@ -54,90 +45,131 @@ export default function Register({ setAuthMode }: RegisterProps) {
 
   const [username, setUsername] = useState<Username>({});
   const [password, setPassword] = useState<Password>({});
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
+  const [gender, setGender] = useState<'male' | 'female'>('male');
 
   return (
-    <Grid container direction="column" spacing={1} p={3}>
-      <Grid item>
-        <TextField
-          label="username"
-          value={username.username}
-          error={isError}
-          fullWidth
-        />
-      </Grid>
-
-      <Grid item>
-        <TextField
-          label="password"
-          value={password.password}
-          error={isError}
-          fullWidth
-        />
-      </Grid>
-
-      <Grid item container spacing={1}>
-        <Grid item xs={6}>
-          <TextField
-            label="first name"
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      height="100%"
+    >
+      <Grid
+        item
+        container
+        direction="row"
+        spacing={1}
+        p={3}
+        width="400px"
+        justifyContent="center"
+      >
+        <Grid item xs={12}>
+          <StyledTextField
+            label="username"
             value={username.username}
             error={isError}
             fullWidth
           />
         </Grid>
-        <Grid item xs={6}>
-          <TextField
-            label="last name"
+
+        <Grid item xs={12}>
+          <StyledTextField
+            label="password"
+            value={password.password}
+            error={isError}
+            fullWidth
+          />
+        </Grid>
+
+        <Grid item container spacing={1}>
+          <Grid item xs={6}>
+            <StyledTextField
+              label="first name"
+              value={username.username}
+              error={isError}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <StyledTextField
+              label="last name"
+              value={username.username}
+              error={isError}
+              fullWidth
+            />
+          </Grid>
+        </Grid>
+
+        <Grid item xs={12}>
+          <StyledTextField
+            label="email"
             value={username.username}
             error={isError}
             fullWidth
           />
         </Grid>
-      </Grid>
 
-      <Grid item>
-        <TextField
-          label="email"
-          value={username.username}
-          error={isError}
-          fullWidth
-        />
-      </Grid>
+        <Grid item container spacing={1}>
+          <Grid item xs={6}>
+            <DatePicker
+              sx={{ backgroundColor: '#ffffff' }}
+              label="Date of Birth"
+              defaultValue={dayjs('2000-01-01')}
+              slotProps={{ textField: { fullWidth: true } }}
+            />
+          </Grid>
 
-      <Grid item container spacing={1}>
-        <Grid item xs={6}>
-          <DatePicker
-            label="Date of Birth"
-            defaultValue={dayjs('2022-04-17')}
-            slotProps={{ textField: { fullWidth: true } }}
-          />
+          <Grid
+            item
+            container
+            xs={6}
+            justifyContent="space-around"
+            alignItems="center"
+          >
+            <Grid item>
+              <StyledIconButton
+                selected={gender === 'male'}
+                onClick={() => setGender('male')}
+              >
+                <MaleIcon />
+              </StyledIconButton>
+            </Grid>
+            <Grid item>
+              <StyledIconButton
+                selected={gender === 'female'}
+                onClick={() => setGender('female')}
+              >
+                <FemaleIcon />
+              </StyledIconButton>
+            </Grid>
+          </Grid>
         </Grid>
+
+        <Grid item>
+          <Button>Register</Button>
+        </Grid>
+
         <Grid
           item
           container
-          xs={6}
-          justifyContent="space-around"
+          xs={12}
+          sx={{ marginTop: 4 }}
+          direction="column"
           alignItems="center"
         >
           <Grid item>
-            <IconButton>
-              <MaleIcon />
-            </IconButton>
+            <Typography>Already haven an account?</Typography>
           </Grid>
+
           <Grid item>
-            <IconButton>
-              <FemaleIcon />
-            </IconButton>
+            <Button onClick={() => setAuthMode('login')}>Login</Button>
           </Grid>
         </Grid>
-      </Grid>
-
-      <Grid item>
-        <Button>Register</Button>
-      </Grid>
-
-      <Grid item>
-        <Typography>Already haven an account?</Typography>
-        <Button onClick={() => setAuthMode('login')}>Login</Button>
       </Grid>
     </Grid>
   );

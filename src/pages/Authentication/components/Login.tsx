@@ -1,6 +1,7 @@
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
+import StyledTextField from '../styles/StyledAuthTextField';
 
 interface Username {
   username?: string;
@@ -34,32 +35,60 @@ export default function Login({ setAuthMode }: LoginProps) {
   const [password, setPassword] = useState<Password>({});
 
   return (
-    <Grid container direction="column" spacing={1} p={3}>
-      <Grid item>
-        <TextField
-          label="username"
-          value={username.username}
-          error={isError}
-          fullWidth
-        />
-      </Grid>
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      height="100%"
+    >
+      <Grid
+        item
+        container
+        direction="row"
+        spacing={1}
+        p={1}
+        width="400px"
+        justifyContent="center"
+      >
+        <Grid item xs={12}>
+          <StyledTextField
+            label="username"
+            value={username.username}
+            error={isError}
+            fullWidth
+          />
+        </Grid>
 
-      <Grid item>
-        <TextField
-          label="password"
-          value={password.password}
-          error={isError}
-          fullWidth
-        />
-      </Grid>
+        <Grid item xs={12}>
+          <StyledTextField
+            label="password"
+            value={password.password}
+            error={isError}
+            fullWidth
+          />
+        </Grid>
 
-      <Grid item>
-        <Button>Login</Button>
-      </Grid>
+        <Grid item>
+          <Button>Login</Button>
+        </Grid>
 
-      <Grid>
-        <Typography>Don't have an account? </Typography>
-        <Button onClick={() => setAuthMode('register')}>Register</Button>
+        <Grid
+          item
+          container
+          xs={12}
+          sx={{ marginTop: 4 }}
+          direction="column"
+          alignItems="center"
+        >
+          <Grid item>
+            <Typography>Don't have an account? </Typography>
+          </Grid>
+
+          <Grid item>
+            <Button onClick={() => setAuthMode('register')}>Register</Button>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
