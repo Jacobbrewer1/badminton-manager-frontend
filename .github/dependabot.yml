@@ -11,7 +11,6 @@ updates:
       interval: "weekly"
       day: "monday"
     reviewers:
-      - "Jacobbrewer1"
       - "harry-whorlow"
     commit-message:
       prefix: "chore"
