@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # docs: https://manpages.ubuntu.com/manpages/bionic/man1/yamllint.1.html
       - name: Install yamllint
